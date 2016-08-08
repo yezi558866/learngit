@@ -1,0 +1,40 @@
+[创建版本库]
+mkdir learngit  --创建目录
+cd learngit  --进入目录
+pwd  --目录路径
+git init  --初始化，多出一个.git目录
+
+[时光穿梭机]
+git status  --查看工作区状态
+git diff  --查看修改内容
+git add  --提交修改
+git commit -m "discription"  --合并更改
+
+[版本回退]
+git reset --hard commit_id  --回到某个版本
+git reset --hard HEAD^  --回退到上一个版本
+git log  --查看提交历史，确定回退到哪个版本
+git log --pretty=oneline  --日志显示在一行
+git reflog  --查看命令历史，确定回到未来哪个版本
+
+[撤销修改]
+git checkout -- <file>  --丢弃工作区的改动
+git reset HEAD <file>  --把暂存区的修改撤销掉，重新放回工作区
+
+[删除文件]
+git rm <file>  --从版本库删除文件
+
+[远程仓库]
+ssh-keygen -t rsa -C "youremail@example.com"  --创建ssh key
+将id_rsa.pub添加至github上。
+
+[添加远程库]
+git remote add origin git@github.com:yezi558866/pythoncode-standardlib.git  --关联一个远程库
+git push -u origin master  --把本地库的所有内容推送到远程库，第一次加“-u”
+git push origin master  --后期推送命令
+
+[从远程库克隆]
+git clone git@github.com:yezi558866/learngit.git
+
+[创建与合并分支]
+
