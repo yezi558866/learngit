@@ -1,2 +1,79 @@
 # learngit
 主要介绍使用git的命令。
+
+## 创建版本库
+mkdir learngit  --创建目录
+cd learngit  --进入目录
+pwd  --目录路径
+git init  --初始化，多出一个.git目录
+
+## 时光穿梭机
+git status  --查看工作区状态
+git diff  --查看修改内容
+git add  --提交修改
+git commit -m "discription"  --合并更改
+
+## 版本回退
+git reset --hard commit_id  --回到某个版本
+git reset --hard HEAD^  --回退到上一个版本
+git log  --查看提交历史，确定回退到哪个版本
+git log --pretty=oneline  --日志显示在一行
+git reflog  --查看命令历史，确定回到未来哪个版本
+
+## 撤销修改
+git checkout -- <file>  --丢弃工作区的改动
+git reset HEAD <file>  --把暂存区的修改撤销掉，重新放回工作区
+
+## 删除文件
+git rm <file>  --从版本库删除文件
+
+## 远程仓库
+ssh-keygen -t rsa -C "youremail@example.com"  --创建ssh key
+将id_rsa.pub添加至github上。
+
+## 添加远程库
+git remote add origin git@github.com:username/learngit.git  --关联一个远程库
+git push -u origin master  --把本地库的所有内容推送到远程库，第一次加“-u”
+git push origin master  --推送命令
+
+## 从远程克隆
+git clone git@github.com:username/learngit.git
+
+## 创建与合并分支
+git branch          --查看分支
+git branch <name>    --创建分支
+git checkout <name>  --切换分支
+git checkout -b <name>  --创建+切换分支。-b:表示创建并切换。
+git merge <name>      --合并某分支到当前分支
+git merge --no-ff -m "discription" <name>  --推荐使用“禁用Fast forward”来合并分支
+git branch -d <name>  --删除分支
+git branch -D <name>  --强行删除一个未被合并过的分支
+
+## 解决冲突
+git log --graph --pretty=oneline --abbrev-commit --查看分支合并图
+
+## bug分支
+git stash  --工作现场保存
+git stash pop  --回到工作现场
+git stash list  --查看stash内容
+
+## 多人协作
+git push origin <branch-name>  --推送自己的修改
+git pull                       --远程分支比本地新，则拉最新
+git branch --set-upstream <branch-name> origin/<branch-name>  --创建本地分支和远程分支的链接关系
+git remote -v  --查看远程库信息
+git checkout -b <branch-name> origin/<branch-name>  --在本地创建和远程分支对应的分支
+
+## 创建标签
+git tag <name>  --用于新建一个标签
+git tag <name> <commit id>  --在指定的commit id上打标签
+git tag -a <tagname> -m "blabla..."  --可以指定标签信息，“-a”指定标签名，“-m”指定说明文字
+git tag -s <tagname> -m "blabla..."  --可以用PGP签名标签
+git tag         --可以查看所有标签
+git show <tagname>  --查看标签信息
+
+## 操作标签
+git push origin <tagname>  --推送一个本地标签
+git push origin --tags     --推送全部未推送过的本地标签
+git tag -d <tagname>  --删除一个本地标签
+git push origin :refs/tags/<tagname>  --删除一个远程标签
